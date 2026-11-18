@@ -1,25 +1,49 @@
 public class ServiceRecord {
-    private String serviceDescription = "Routine bicycle service";
-    private double accumulatedCost = 0;
-    private boolean completionStatus = false;
+    private String serviceDescription;
+    private double accumulatedCost;
+    private boolean completionStatus;
+
+    public ServiceRecord(){
+        this.serviceDescription = "Routine bicycle service";
+        this.accumulatedCost = 0.0;
+        this.completionStatus = false;
+    }
 
     public String getServiceDescription(){
         return serviceDescription;
     }
-    public double getAccmulatedCost(){
+    public double getAccumulatedCost(){
         return accumulatedCost;
     }
-    public boolean getCompleteionStatus(){
+    public boolean getCompletionStatus(){
         return completionStatus;
     }
 
     public void addCharge(double amount){
-        accumulatedCost += amount;
+        if (validation(amount)){
+            accumulatedCost += amount;
+        }
     }
-    public void completionStatus(){
+
+    private boolean validation(double amount){
+        return amount > 0;
+    }
+
+    private String statusCheck(){
+        if (completionStatus){
+            return "Complete";
+        } else {
+            return "Open";
+        }
+    }
+    public void markComplete(){
         completionStatus = true;
     }
+    
+
+
     public String toString(){
-        return serviceDescription + ": " + accumulatedCost + completionStatus; 
+        return getServiceDescription() + ": " + "$" + getAccumulatedCost() + " ("  + statusCheck() + ")"; 
+
     }
 }
