@@ -14,6 +14,8 @@ public class BikeShop{
 
         return bike.getServiceRecord().toString();
     }
+
+    //https://stackoverflow.com/questions/285177/how-do-i-call-one-constructor-from-another-in-java
     public static double laborCost(double hours){
         return hours * LABOR_RATE;
     }
